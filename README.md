@@ -30,15 +30,23 @@ Most active MAC address, NIC manufacturer, headquarters → Identifying the busi
 ## 3. Internal Network
 Number of hosts (/24 subnet), most active hostname → Reveals how many systems were involved and which one was targeted. This helps scope incident impact and prioritize containment.
 
-
+- To determine the number of actual computers in the capture, the Wireshark Endpoints section under *Statistics → Endpoints → IPv4* provides a summary of all IP addresses detected during the session. 
+- DHCP provides additional informations ,hostname,mac address,default gateway.
 - **Hostname:** `Beijing‑5cd1‑PC`  
 - **Vendor Class:** MSFT 5.0  
 - **Private Network:** 10.4.10.0/24 (3 hosts involved)  
 
 ---
-4. DNS Analysis
+## 4. DNS Analysis
 DNS server IP, queried domain, resolved IP, country → DNS queries often expose attacker infrastructure. Mapping domains to IPs and countries highlights command‑and‑control servers or malicious download sites, crucial for threat intelligence.
 
+- filter DNS for DNS quries connecting with client and server 
+
+- **DNS Server:** 10.4.10.4  
+- **Victim Query (Packet 204):** `proforma‑invoices.com`  
+- **Resolved IP:** 217.182.138.150  
+- **Geolocation:** Roubaix, France (OVH SAS)  
+---
 5. Host System
 Victim OS → Knowing the operating system allows analysts to assess vulnerabilities exploited and tailor remediation steps (patches, hardening, EDR deployment).
 
